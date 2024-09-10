@@ -22,13 +22,12 @@
             height: 100vh;
             text-align: center;
             position: relative;
-            z-index: 2; /* Ensure content is above the slider */
-            padding: 20px; /* Added padding to push content up */
+            z-index: 1;
         }
 
         .logo-holder {
-            width: 150px;
-            height: 150px;
+            width: 180px; /* Increased size */
+            height: 180px; /* Increased size */
             border-radius: 50%;
             background-color: #fff;
             display: flex;
@@ -36,10 +35,12 @@
             justify-content: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
+            position: relative;
+            top: -20px; /* Adjusted position */
         }
 
         .logo-holder img {
-            width: 80%;
+            width: 85%; /* Slightly increased size */
             border-radius: 50%;
         }
 
@@ -53,7 +54,7 @@
 
         .social-links a {
             font-size: 24px;
-            color: #333;
+            color: #fff; /* Changed to white */
             text-decoration: none;
         }
 
@@ -63,19 +64,21 @@
 
         .map iframe {
             width: 100%;
-            height: 400px; /* Increased height for a larger map preview */
+            height: 300px;
             border: 0;
             margin: 20px 0;
         }
 
+        /* Background slider with overlay */
         .slider {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Ensure slider is behind the content */
+            z-index: -1;
             overflow: hidden;
+            background: rgba(0, 0, 0, 0.5); /* Background overlay */
         }
 
         .slider img {
@@ -84,12 +87,12 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
-            border: 2px solid red; /* Debugging border */
+            transition: opacity 1s ease-in-out, transform 10s ease-in-out; /* Added Ken Burns effect */
         }
 
         .slider img.active {
             opacity: 1;
+            transform: scale(1.1); /* Ken Burns effect */
         }
 
         @media (max-width: 768px) {
@@ -98,9 +101,21 @@
             }
 
             .logo-holder {
-                width: 120px;
-                height: 120px;
+                width: 150px; /* Adjusted size */
+                height: 150px; /* Adjusted size */
             }
+
+            .map iframe {
+                width: 80%; /* Adjusted width on mobile devices */
+            }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            color: #333;
         }
     </style>
 </head>
@@ -128,8 +143,12 @@
         <div class="map">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15891.221685555085!2d-0.4605438!3d6.0471317!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDInNTcuNyJOIDDCsDI3JzM3LjkiVw!5e0!3m2!1sen!2sgh!4v1694355489965!5m2!1sen!2sgh"
-                width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+    </div>
+
+    <div class="footer">
+        <p>Designed by Eric</p>
     </div>
 
     <script>
